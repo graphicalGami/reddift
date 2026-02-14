@@ -12,9 +12,15 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "reddiftObjC",
+            path: "reddift/vendor/Google",
+            publicHeadersPath: "."
+        ),
+        .target(
             name: "reddift",
-            path: "reddift",         // source files live here
-            exclude: []
+            dependencies: ["reddiftObjC"],
+            path: "reddift",
+            exclude: ["vendor/Google"]
         ),
     ]
 )
