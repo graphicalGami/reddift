@@ -1,26 +1,31 @@
-// swift-tools-version: 5.9
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
     name: "reddift",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15)
+        .iOS(.v9),
+        .tvOS(.v9)
     ],
     products: [
-        .library(name: "reddift", targets: ["reddift"]),
+        .library(
+            name: "reddift",
+            targets: ["reddift"]
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/sonsongithub/HTMLSpecialCharacters.git", from: "1.0.0"),
+        .package(url: "https://github.com/timpickles/MiniKeychain.git", branch: "master")
     ],
     targets: [
         .target(
-            name: "reddiftObjC",
-            path: "reddift/vendor/Google",
-            publicHeadersPath: "."
-        ),
-        .target(
             name: "reddift",
-            dependencies: ["reddiftObjC"],
-            path: "reddift",
-            exclude: ["vendor/Google"]
-        ),
+            dependencies: [
+                .product(name: "HTMLSpecialCharacters", package: "HTMLSpecialCharacters"),
+                .product(name: "MiniKeychain", package: "MiniKeychain"),
+            ],
+            path: "framework",
+            sources: ["."]
+        )
     ]
 )
