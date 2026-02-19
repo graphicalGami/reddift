@@ -114,7 +114,7 @@ public class MiniKeychain {
     }
 
     public init(accessGroup: String) {
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+        if let bundleIdentifier = Bundle.module.bundleIdentifier {
             self.service = bundleIdentifier
         } else {
             self.service = nil

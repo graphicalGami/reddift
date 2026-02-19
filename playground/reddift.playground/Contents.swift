@@ -91,7 +91,7 @@ func getSubreddits(with session: Session) {
 }
 
 func loadAccount() -> (String, String, String, String)? {
-    return (Bundle.main.url(forResource: "test_config.json", withExtension:nil)
+    return (Bundle.module.url(forResource: "test_config.json", withExtension:nil)
         .flatMap { (url) -> Data? in
             do {
                 return try Data(contentsOf: url)
