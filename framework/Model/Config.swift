@@ -98,7 +98,7 @@ public final class Config {
         guard !didLoadFromJSON else { return }
         didLoadFromJSON = true
 
-        guard let path = Bundle.module.path(forResource: "reddift_config", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: "reddift_config", ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             return
         }
